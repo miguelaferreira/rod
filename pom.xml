@@ -94,6 +94,9 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <repoToken>yourcoverallsprojectrepositorytoken</repoToken>
+        </configuration>
       </plugin>
     </plugins>
   </build>

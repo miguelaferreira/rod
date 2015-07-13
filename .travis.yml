@@ -1,5 +1,16 @@
 language: java
 jdk:
   - oraclejdk8
-after_success:
-  - mvn clean test jacoco:report coveralls:report
+sudo: false
+cache:
+  apt: true
+  directories:
+    - $HOME/.m2
+addons:
+  apt:
+    sources:
+    - rabbitmq-testing
+    packages:
+    - rabbitmq-server
+script:
+  - mvn -Drod.build.env=travis clean install jacoco:report coveralls:report

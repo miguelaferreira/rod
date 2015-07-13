@@ -1,4 +1,4 @@
-package rod.rabbitmq;
+package rod;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Queue;
@@ -7,15 +7,12 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
-public class RabbitConfiguration {
+public class RabbitmqTestConfiguration {
 
     @Bean
     public ConnectionFactory connectionFactory() {
-        CachingConnectionFactory connectionFactory =
-                new CachingConnectionFactory("localhost");
+        final CachingConnectionFactory connectionFactory = new CachingConnectionFactory("localhost");
         return connectionFactory;
     }
 
@@ -30,7 +27,8 @@ public class RabbitConfiguration {
     }
 
     @Bean
-    public Queue myQueue() {
-        return new Queue("myqueue");
+    public Queue testQueue() {
+        return new Queue("testqueue");
     }
+
 }

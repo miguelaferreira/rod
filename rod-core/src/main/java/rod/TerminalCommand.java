@@ -45,7 +45,7 @@ public abstract class TerminalCommand implements Command {
     private void runFunction() {
         try {
             final String[] command = buildCommand();
-            logger.debug("Executing command: {}", command);
+            logger.debug("Executing command: {}", command.toString());
             final Process process = runtime.exec(command);
             final InputStreamReader processOutputReader = new InputStreamReader(process.getInputStream());
             StringObservable.from(processOutputReader)

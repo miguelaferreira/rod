@@ -17,6 +17,7 @@ public class RabbitmqAdapter {
     private final RabbitmqStopServerCommand stopServerCommand;
 
     public RabbitmqAdapter() {
+        logger.info("RabbitMQ command sudo: {}", rabbitmqCommandSudo);
         startServerCommand = new RabbitmqStartServerCommand.Builder()
                 .command(RodProperties.getRabbitmqServerCommand())
                 .withArguments(RodProperties.getRabbitmqServerCommandArguments())

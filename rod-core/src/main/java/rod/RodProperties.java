@@ -30,9 +30,7 @@ public class RodProperties {
     }
 
     public static boolean isRabbitmqCommandSudo() {
-        final String property = System.getProperty(ROD_COMMAND_RABBITMQ_SUDO);
-        logger.debug("Property {} set to {}", ROD_COMMAND_RABBITMQ_SUDO, property);
-        return property != null && Boolean.getBoolean(property);
+        return Boolean.getBoolean(ROD_COMMAND_RABBITMQ_SUDO);
     }
 
 }

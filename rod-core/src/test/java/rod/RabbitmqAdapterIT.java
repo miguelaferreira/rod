@@ -6,7 +6,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 import java.io.InputStream;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -45,13 +44,6 @@ public class RabbitmqAdapterIT {
             adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(logger::debug);
             waitForServer(false);
         }
-    }
-
-    @After
-    public void teardown() {
-        logger.debug("Tearing down test");
-        adapter.stopServer();
-        adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(logger::debug);
     }
 
     @Test

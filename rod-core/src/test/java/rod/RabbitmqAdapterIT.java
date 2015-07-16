@@ -73,7 +73,7 @@ public class RabbitmqAdapterIT {
         try {
             template.convertAndSend("testqueue", "foo");
         } catch (final Exception e) {
-            logger.trace("Caught exception checking if server is running", e);
+            logger.debug("Caught exception checking if server is running", e);
             return false;
         }
         return true;

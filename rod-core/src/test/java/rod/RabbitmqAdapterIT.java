@@ -1,6 +1,7 @@
 package rod;
 
 import static com.jayway.awaitility.Awaitility.await;
+import static com.jayway.awaitility.Duration.ONE_SECOND;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -66,7 +67,7 @@ public class RabbitmqAdapterIT {
     }
 
     private static void waitForServer(final boolean toBeRunning) {
-        await().atMost(30, SECONDS).until(() -> RabbitmqAdapterIT.isRunning(), equalTo(toBeRunning));
+        await().pollInterval(ONE_SECOND).atMost(5, SECONDS).until(() -> RabbitmqAdapterIT.isRunning(), equalTo(toBeRunning));
     }
 
     private static boolean isRunning() {

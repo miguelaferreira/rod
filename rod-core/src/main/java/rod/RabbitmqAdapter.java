@@ -11,6 +11,7 @@ public class RabbitmqAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(RabbitmqAdapter.class);
     private final static Runtime runtime = Runtime.getRuntime();
+    private final static boolean rabbitmqCommandSudo = RodProperties.isRabbitmqCommandSudo();
 
     private final RabbitmqStartServerCommand startServerCommand;
     private final RabbitmqStopServerCommand stopServerCommand;
@@ -19,10 +20,12 @@ public class RabbitmqAdapter {
         startServerCommand = new RabbitmqStartServerCommand.Builder()
                 .command(RodProperties.getRabbitmqServerCommand())
                 .withArguments(RodProperties.getRabbitmqServerCommandArguments())
+                .sudo(rabbitmqCommandSudo)
                 .runtime(runtime)
                 .build();
         stopServerCommand = new RabbitmqStopServerCommand.Builder()
                 .command(RodProperties.getRabbitmqCtlCommand())
+                .sudo(rabbitmqCommandSudo)
                 .runtime(runtime)
                 .build();
     }

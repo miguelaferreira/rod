@@ -1,7 +1,6 @@
 package rod;
 
 import static com.jayway.awaitility.Awaitility.await;
-import static com.jayway.awaitility.Duration.ONE_SECOND;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -39,35 +38,35 @@ public class RabbitmqAdapterIT {
 
     @Before
     public void setup() throws Exception {
-        // logger.debug("Setting up test");
-        // if (isRunning()) {
-        // logger.debug("RabbitMQ is running and will be shutdown before executing test");
-        // adapter.stopServer();
-        // adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(System.out::println);
-        // waitForServer(false);
-        // }
+        logger.debug("Setting up test");
+        if (isRunning()) {
+            logger.debug("RabbitMQ is running and will be shutdown before executing test");
+            adapter.stopServer();
+            adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(logger::debug);
+            waitForServer(false);
+        }
     }
 
     @After
     public void teardown() {
-        // logger.debug("Tearing down test");
-        // adapter.stopServer();
-        // adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(System.out::println);
+        logger.debug("Tearing down test");
+        adapter.stopServer();
+        adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(logger::debug);
     }
 
     @Test
     public void testStartStopRabbitmq() throws Exception {
         adapter.startServer();
-        adapter.getStartOutput().subscribeOn(Schedulers.io()).subscribe(System.out::println);
+        adapter.getStartOutput().subscribeOn(Schedulers.io()).subscribe(logger::debug);
         waitForServer(true);
 
-        // adapter.stopServer();
-        // adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(System.out::println);
-        // waitForServer(false);
+        adapter.stopServer();
+        adapter.getStopOutput().subscribeOn(Schedulers.io()).subscribe(logger::debug);
+        waitForServer(false);
     }
 
     private static void waitForServer(final boolean toBeRunning) {
-        await().pollInterval(ONE_SECOND).atMost(5, SECONDS).until(() -> RabbitmqAdapterIT.isRunning(), equalTo(toBeRunning));
+        await().atMost(5, SECONDS).until(() -> RabbitmqAdapterIT.isRunning(), equalTo(toBeRunning));
     }
 
     private static boolean isRunning() {

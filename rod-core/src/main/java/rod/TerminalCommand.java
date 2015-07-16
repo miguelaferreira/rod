@@ -45,7 +45,7 @@ public abstract class TerminalCommand implements Command {
     private void runFunction() {
         try {
             final String[] command = buildCommand();
-            logger.debug("Executing command: {}", command.toString());
+            logger.debug("Executing command: {}", print(command));
             final Process process = runtime.exec(command);
             final InputStreamReader processOutputReader = new InputStreamReader(process.getInputStream());
             StringObservable.from(processOutputReader)
@@ -54,6 +54,15 @@ public abstract class TerminalCommand implements Command {
         } catch (final IOException e) {
             logger.error("Failed to run command " + this.getClass().getName(), e);
         }
+    }
+
+    private static String print(final String[] command) {
+        final StringBuilder sb = new StringBuilder();
+        for (final String c : command) {
+            sb.append(c).append(" ");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
     }
 
     private String[] buildCommand() {

@@ -12,5 +12,17 @@ addons:
     - rabbitmq-testing
     packages:
     - rabbitmq-server
+env:
+  global:
+    - secure: "K2hy3G+CGbinO4iItyu8PnmPL1YMCVSBADGHeGW2F3btEfuhrhTIYmlIJAhdm9b2eaJvM+I5uVNd55aPfjLHz/whPvyzbqOxXFG1SBMrF+5qXY0uxvV4aOqedpL9jvag+5aTtzP78SfiC4JHk8Z0k0fEK3lzoMuVYNO05Cdrz7Ww1xsTvpfzmZlXkfg8MjKas94C9sKAypm8ZbyHJKGE5cchbjOfDhEXzKMU5j78r9Zr36d0vVDoXSrOp5USeuWZOIvsNQ2izlH8N0LkV/2IcdUmTf67FHddRJf3khs2LxO5tE3wB++wyg/iB1ODRWTDEsd8Xy3MR8EMV0xRB+ANX67LdTxUlur5n7j0QXTl3SDIdh8NBF8MYJr6QU8TK7GRoSdMT21yoYAz9obpM2S2hcDDrfbB7Vfteo4uRYKdm6S0tNqvq3VHkuU1JeTQvR7D6waltfq3q6sCIodh7uksGhZBrpOKzeKGbOX9vq4uF4N0jozIy7lyIFJj5ixfsxfFpZ0G4wPopxB964vBUy9gcxmGIcEIDqmtU3q0v7DG4tHmZvUN243h8Lyqw6K11gzuE60d4RulgxQXmMAry/zX/g994c9WBR8VaHjVukCUtjlSLQ1FgfMfeEgbsTOIr+vQTsjLjdTIA8je9WTI0Y/nNgsSXH5IxnXt1j+EApEQ3to="
+addons:
+  coverity_scan:
+    project:
+      name: ekholabs/rod
+      description: ROD
+    notification_email: miguelferreira@me.com
+    build_command_prepend: mvn clean
+    build_command: mvn -DskipTests=true compile
+    branch_pattern: pull/*/head
 script:
   - mvn -Drod.build.env=travis clean install jacoco:report coveralls:report

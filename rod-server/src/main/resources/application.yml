@@ -1,0 +1,12 @@
+management:
+  health:
+    rabbit:
+      enabled: false
+
+endpoints:
+  health:
+    enabled: yes
+    sensitive: true
+
+logging:
+  file: rod.log

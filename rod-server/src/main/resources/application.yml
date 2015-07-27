@@ -1,3 +1,13 @@
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    build.version: ${project.version}
+  app:
+    name: ROD
+    description: Robot On Duty
+    version: ${project.version}
+
 management:
   health:
     rabbit:

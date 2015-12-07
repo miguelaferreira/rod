@@ -58,7 +58,7 @@ public class RabbitmqAdapterIT {
     }
 
     private static void waitForServer(final boolean toBeRunning) {
-        await().atMost(5, SECONDS).until(() -> RabbitmqAdapterIT.isRunning(), equalTo(toBeRunning));
+        await().atMost(10, SECONDS).until(() -> RabbitmqAdapterIT.isRunning(), equalTo(toBeRunning));
     }
 
     private static boolean isRunning() {

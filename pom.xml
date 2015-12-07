@@ -9,6 +9,7 @@
   <modules>
     <module>rod-core</module>
     <module>rod-server</module>
+    <module>rod-demo</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,6 +36,16 @@
       <groupId>io.reactivex</groupId>
       <artifactId>rxjava-string</artifactId>
       <version>0.21.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava-joins</artifactId>
+      <version>0.21.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-rx</artifactId>
+      <version>2.16.0</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>

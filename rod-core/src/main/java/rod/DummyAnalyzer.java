@@ -1,6 +1,6 @@
 package rod;
 
-public class DummyAnalyzer implements Analyzer {
+public class DummyAnalyzer implements Transformation<Action, Observation> {
 
     private ObservationToCommandMapping observationToCommand;
 

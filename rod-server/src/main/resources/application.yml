@@ -17,6 +17,31 @@ endpoints:
   health:
     enabled: yes
     sensitive: true
+  jmx:
+    enabled: true
+    domain: rod
 
 logging:
   file: rod.log
+  
+---
+ 
+ spring:
+   profiles: messaging
+ server:
+   port: 8080
+ rod:
+   controller:
+     message: true
+   supervisor: true
+ 
+---
+ 
+ spring:
+   profiles: control
+ server:
+  port: 8090
+ rod:
+   controller:
+     message: false
+   supervisor: true

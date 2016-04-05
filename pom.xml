@@ -9,7 +9,6 @@
   <modules>
     <module>rod-core</module>
     <module>rod-server</module>
-    <module>rod-demo</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
